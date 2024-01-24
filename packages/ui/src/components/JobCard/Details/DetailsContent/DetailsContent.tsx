@@ -7,6 +7,7 @@ import { Highlight } from '../../../Highlight/Highlight';
 import { ArrowDownIcon } from '../../../Icons/ArrowDownIcon';
 import { Button } from '../../../Button/Button';
 import { JobLogs } from './JobLogs/JobLogs';
+import { Progress } from '../../Progress/Progress';
 
 interface DetailsContentProps {
   job: AppJob;
@@ -23,6 +24,12 @@ export const DetailsContent = ({ selectedTab, job, actions }: DetailsContentProp
   const { stacktrace, data, returnValue, opts, failedReason } = job;
 
   switch (selectedTab) {
+    case 'Progress':
+      if (typeof job.progress === 'number') {
+        return <Progress percentage={job.progress} status={'active'} />;
+      }
+
+      return <Highlight language="json">{JSON.stringify(job.progress, null, 2)}</Highlight>;
     case 'Data':
       return collapseJobData && !collapseState.data ? (
         <Button onClick={() => setCollapse({ ...collapseState, data: true })}>

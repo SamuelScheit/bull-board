@@ -41,7 +41,8 @@
       "DATA": "Data",
       "OPTIONS": "Options",
       "LOGS": "Logs",
-      "ERROR": "Error"
+      "ERROR": "Error",
+      "PROGRESS": "Progress"
     }
   },
   "QUEUE": {
